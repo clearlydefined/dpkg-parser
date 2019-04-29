@@ -1,0 +1,24 @@
+{
+  "name": "dpkg-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./out/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^11.11.3",
+    "@types/request": "^2.48.1",
+    "@types/requestretry": "^1.12.4",
+    "openpgp": "^4.4.10",
+    "request": "^2.88.0",
+    "requestretry": "^3.1.0",
+    "typescript": "^3.3.3333",
+    "zlib": "^1.0.5"
+  }
+}
