@@ -1,5 +1,5 @@
 {
-  "name": "dpkg-client",
+  "name": "dpkg-parser",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
