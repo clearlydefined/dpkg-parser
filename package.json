@@ -6,19 +6,24 @@
   "scripts": {
     "build": "tsc",
     "start": "node ./out/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "^11.11.3",
-    "@types/request": "^2.48.1",
-    "@types/requestretry": "^1.12.4",
     "openpgp": "^4.4.10",
     "request": "^2.88.0",
     "requestretry": "^3.1.0",
-    "typescript": "^3.3.3333",
     "zlib": "^1.0.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.12",
+    "@types/node": "^11.13.8",
+    "@types/request": "^2.48.1",
+    "@types/requestretry": "^1.12.4",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.5"
   }
 }
