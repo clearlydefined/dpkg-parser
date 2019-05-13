@@ -32,7 +32,7 @@ export class DebianSourceControlIterator {
       }
       // The paragraphs are separated by empty lines. Parsers may accept lines consisting solely of spaces and tabs as paragraph separators
       if (line.match(/^[ \t]*$/)) {
-        return {value: this.collapseObject(currentRecord), done: false}
+        return { value: this.collapseObject(currentRecord), done: false }
       }
       // The field name is composed of US-ASCII characters excluding control characters, space, and colon (i.e., characters in the ranges U+0021 (!) through U+0039 (9), and U+003B (;) through U+007E (~), inclusive). Field names must not begin with the comment character (U+0023 #), nor with the hyphen character (U+002D -).
       // The field ends at the end of the line or at the end of the last continuation line (see below). Horizontal whitespace (spaces and tabs) may occur immediately before or after the value and is ignored there; it is conventional to put a single space after the colon. For example, a field might be:
@@ -40,9 +40,7 @@ export class DebianSourceControlIterator {
       // the field name is Package and the field value libc6.
       // simple
       // The field, including its value, must be a single line. Folding of the field is not permitted. This is the default field type if the definition of the field does not specify a different type.
-      let match = line.match(
-        /^(?<fieldName>[^-][!-9;-~]*):[ \t]*(?<fieldValue>.*?)[ \t]*$/
-      )
+      let match = line.match(/^(?<fieldName>[^-][!-9;-~]*):[ \t]*(?<fieldValue>.*?)[ \t]*$/)
       if (match && match.groups) {
         const fieldName = match.groups.fieldName
         // Field names are not case-sensitive, but it is usual to capitalize the field names using mixed case as shown below.
@@ -50,11 +48,9 @@ export class DebianSourceControlIterator {
         const fieldValue = match.groups.fieldValue
         // A paragraph must not contain more than one instance of a particular field name.
         if (Object.keys(currentRecord).includes(normalizedFieldName)) {
-          throw new Error(
-            `Duplicate field '${fieldName}' on line ${this.currentLine}`
-          )
+          throw new Error(`Duplicate field '${fieldName}' on line ${this.currentLine}`)
         }
-        currentRecord[normalizedFieldName] = {fieldName, fieldValue}
+        currentRecord[normalizedFieldName] = { fieldName, fieldValue }
         continue
       }
       // TODO: The difference between folded and multiline has not been implemented
@@ -66,16 +62,14 @@ export class DebianSourceControlIterator {
       if (match && match.groups) {
         if (lastField) {
           const currentValue = currentRecord[lastField]
-          currentValue.fieldValue +=
-            (currentValue.fieldValue !== '' ? '\n' : '') +
-            match.groups.fieldValue
+          currentValue.fieldValue += (currentValue.fieldValue !== '' ? '\n' : '') + match.groups.fieldValue
         } else {
           // TODO: Syntax error
         }
       }
       // TODO: This is a syntax error unless it's a continuation line
     }
-    return {done: true}
+    return { done: true }
   }
   private collapseObject(input: any): any {
     const output: any = {}
