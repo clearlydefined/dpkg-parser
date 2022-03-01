@@ -14,7 +14,7 @@
   "dependencies": {
     "openpgp": "^4.4.10",
     "request": "^2.88.0",
-    "requestretry": "^3.1.0",
+    "requestretry": "^7.0.0",
     "typed-rest-client": "^1.4.0",
     "zlib": "^1.0.5"
   },
